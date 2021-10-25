@@ -1,15 +1,18 @@
 package com.salesianostriana.E07.model;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
 @Embeddable
-public class SongPlayListPK {
+@AllArgsConstructor
+@Getter
+@Setter
+public class SongPlayListPK implements Serializable {
 
     private Long song_id;
     private Long playList_id;

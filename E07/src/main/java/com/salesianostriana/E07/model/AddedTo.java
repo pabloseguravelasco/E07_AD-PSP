@@ -1,13 +1,18 @@
 package com.salesianostriana.E07.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-@Data @NoArgsConstructor
+@NoArgsConstructor
 @Entity
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+
 public class AddedTo implements Serializable {
 
 
@@ -15,8 +20,8 @@ public class AddedTo implements Serializable {
     private SongPlayListPK id = new SongPlayListPK();
 
 
-    private String datetime;
-    private String order;
+    private LocalDateTime datetime;
+    private int order;
 
 
     @ManyToOne
@@ -29,6 +34,32 @@ public class AddedTo implements Serializable {
     @MapsId("playList_id")
     @JoinColumn(name="playList_id")
     private PlayList playList;
+
+    //Helpers
+
+    public void addSong(Song s){
+        song = s;
+        s.getAddedTo().add(this);
+    }
+    public void removeSong(Song s){
+        song = s;
+        s.getAddedTo().remove(this);
+    }
+    public void addPlayList(PlayList p){
+        playList = p;
+        p.getAddedTo().add(this);
+    }
+    public void removePlayList(PlayList p){
+        playList = p;
+        p.getAddedTo().remove(this);
+    }
+  /*  public void addSongPlayList(Song s, PlayList p){
+
+
+    }
+    public void removeSongPlayList(Song s, PlayList p){
+
+    }*/
 
 
 

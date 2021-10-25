@@ -23,20 +23,8 @@ public class Artist {
 
     private String name;
 
-    @OneToMany(mappedBy = "song")
+    @OneToMany(mappedBy = "artist")
     private List<Song> songs = new ArrayList<>();
 
-    //Helpers
 
-    public void addSong(Song s) {
-        this.songs = s;
-        if (s.getSongs == null)
-            s.setAlumnos(new ArrayList<>());
-        c.getAlumnos().add(this);
-    }
-
-    public void removeCurso(Curso c) {
-        c.getAlumnos().remove(this);
-        this.curso = null;
-    }
 }
