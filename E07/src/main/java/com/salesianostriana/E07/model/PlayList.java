@@ -21,7 +21,7 @@ public class PlayList {
 
     private String name;
     private String description;
-
+    @Builder.Default
     @OneToMany(mappedBy = "playList", fetch = FetchType.EAGER)
     private List<AddedTo> addedTo = new ArrayList<>();
 

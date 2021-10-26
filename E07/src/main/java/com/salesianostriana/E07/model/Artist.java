@@ -22,7 +22,7 @@ public class Artist {
     private Long id;
 
     private String name;
-
+    @Builder.Default
     @OneToMany(mappedBy = "artist")
     private List<Song> songs = new ArrayList<>();
 

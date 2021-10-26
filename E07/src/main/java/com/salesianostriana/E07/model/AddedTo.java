@@ -15,13 +15,13 @@ import java.time.LocalDateTime;
 
 public class AddedTo implements Serializable {
 
-
+    @Builder.Default
     @EmbeddedId
     private SongPlayListPK id = new SongPlayListPK();
 
 
     private LocalDateTime datetime;
-    private int order;
+    private int orden;
 
 
     @ManyToOne
@@ -35,31 +35,40 @@ public class AddedTo implements Serializable {
     @JoinColumn(name="playList_id")
     private PlayList playList;
 
-    //Helpers
+    //Métodos Helpers
 
     public void addSong(Song s){
-        song = s;
-        s.getAddedTo().add(this);
+
+            song = s;
+            s.getAddedTo().add(this);
+
+
     }
     public void removeSong(Song s){
         song = s;
         s.getAddedTo().remove(this);
     }
     public void addPlayList(PlayList p){
-        playList = p;
-        p.getAddedTo().add(this);
+
+            playList = p;
+            p.getAddedTo().add(this);
+
+
     }
     public void removePlayList(PlayList p){
         playList = p;
         p.getAddedTo().remove(this);
     }
-  /*  public void addSongPlayList(Song s, PlayList p){
+     public void addSongPlayList(Song s, PlayList p){
 
+        addSong(s);
+        addPlayList(p);
 
     }
     public void removeSongPlayList(Song s, PlayList p){
-
-    }*/
+        removeSong(s);
+        removePlayList(p);
+    }
 
 
 

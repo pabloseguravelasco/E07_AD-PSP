@@ -28,7 +28,7 @@ public class Song {
     @ManyToOne
     @JoinColumn(name = "artist", foreignKey = @ForeignKey(name = "FK_SONG_ARTIST"))
     private Artist artist;
-
+    @Builder.Default
     @OneToMany(mappedBy = "song", fetch = FetchType.EAGER)
     private List<AddedTo> addedTo = new ArrayList<>();
 
